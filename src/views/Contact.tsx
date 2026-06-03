@@ -75,18 +75,18 @@ export default function Contact() {
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B0F0A]/55 border border-[#C9A46B]/30 text-[#C9A46B] text-[10px] uppercase tracking-[0.18em] font-medium mb-4">
             Visit
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-[#F4EBE1] mb-4">Get in Touch</h1>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#F4EBE1] mb-4">Get in Touch</h1>
           <p className="text-base text-[#F4EBE1]/50 max-w-lg font-light">
             We'd love to hear from you. Whether you're planning a visit, placing a wholesale order, or just want to say hello.
           </p>
         </section>
 
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
             {/* Left - Dual Mode: Store Locator & Farm Visit */}
             <div className="flex flex-col h-full">
               {/* Toggle UI */}
-              <div className="flex p-1 bg-[#2B1E16] rounded-full max-w-xs mb-8 border border-[#C9A46B]/10">
+              <div className="flex p-1 bg-[#2B1E16] rounded-full mb-8 border border-[#C9A46B]/10">
                 <button
                   type="button"
                   onClick={() => setActiveTab("store")}

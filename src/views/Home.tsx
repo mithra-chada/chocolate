@@ -86,7 +86,7 @@ function HeroSection() {
 
       {/* Content */}
       <div ref={contentRef} className="relative z-[2] text-center px-6">
-        <h1 className="hero-title font-serif text-6xl md:text-7xl lg:text-8xl text-[#F4EBE1] mb-4 leading-[0.95]">
+        <h1 className="hero-title font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F4EBE1] mb-4 leading-[0.95]">
           Myth Cocoa
         </h1>
         <p className="hero-subtitle font-sans text-base md:text-lg text-[#F4EBE1]/70 max-w-md mx-auto mb-10 font-light">
@@ -158,18 +158,18 @@ function PromiseSection() {
         <h2 className="promise-title font-serif text-4xl md:text-5xl text-[#F4EBE1] mb-16">
           Small batches. Real origin.
         </h2>
-        <div className="promise-stats grid grid-cols-3 gap-8 md:gap-16 mb-16">
+        <div className="promise-stats grid grid-cols-3 gap-4 md:gap-16 mb-16">
           <div className="promise-stat">
-            <span className="font-serif italic text-5xl md:text-6xl text-[#C9A46B]">80+</span>
-            <p className="text-xs uppercase tracking-[0.18em] text-[#F4EBE1]/50 mt-3">Cacao varieties sampled</p>
+            <span className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#C9A46B]">80+</span>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.18em] text-[#F4EBE1]/50 mt-2 sm:mt-3">Cacao varieties</p>
           </div>
           <div className="promise-stat">
-            <span className="font-serif italic text-5xl md:text-6xl text-[#C9A46B]">&lt;1%</span>
-            <p className="text-xs uppercase tracking-[0.18em] text-[#F4EBE1]/50 mt-3">Of harvest selected</p>
+            <span className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#C9A46B]">&lt;1%</span>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.18em] text-[#F4EBE1]/50 mt-2 sm:mt-3">Harvest selected</p>
           </div>
           <div className="promise-stat">
-            <span className="font-serif italic text-5xl md:text-6xl text-[#C9A46B]">72h</span>
-            <p className="text-xs uppercase tracking-[0.18em] text-[#F4EBE1]/50 mt-3">Slow conching</p>
+            <span className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#C9A46B]">72h</span>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.18em] text-[#F4EBE1]/50 mt-2 sm:mt-3">Slow conching</p>
           </div>
         </div>
         <p className="promise-text text-base text-[#F4EBE1]/60 max-w-2xl mx-auto leading-relaxed font-light">
@@ -230,7 +230,7 @@ function ProcessSection({
   }, [direction]);
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-[80vh] flex items-center overflow-hidden">
+    <section ref={sectionRef} className="relative w-full min-h-[60vh] md:min-h-[80vh] flex items-end md:items-center overflow-hidden">
       <div className="process-image absolute inset-0">
         <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
           <img
@@ -250,15 +250,15 @@ function ProcessSection({
         </div>
         <div className="absolute inset-0 bg-[#1B0F0A]/50" />
       </div>
-      <div className={`relative z-10 max-w-xl px-8 md:px-16 ${direction === "left" ? "ml-auto text-right" : ""}`}>
+      <div className={`relative z-10 w-full max-w-xl px-6 py-10 md:px-16 md:py-0 ${direction === "left" ? "md:ml-auto md:text-right" : ""}`}>
         <div className="process-content">
           <SectionBadge>Process</SectionBadge>
           <div className="mt-6 mb-4">
             <span className="font-serif italic text-7xl text-[#C9A46B]/30">{step}</span>
           </div>
           <p className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-3 font-medium">{label}</p>
-          <h3 className="font-serif text-3xl md:text-4xl text-[#F4EBE1] mb-4 leading-tight">{title}</h3>
-          <p className="text-base text-[#F4EBE1]/60 leading-relaxed font-light">{body}</p>
+          <h3 className="font-serif text-2xl md:text-4xl text-[#F4EBE1] mb-4 leading-tight">{title}</h3>
+          <p className="text-sm md:text-base text-[#F4EBE1]/60 leading-relaxed font-light">{body}</p>
         </div>
       </div>
     </section>
@@ -393,7 +393,7 @@ function ExperienceSection() {
           <SectionBadge>Shop</SectionBadge>
           <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6">Visit the store.</h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="experience-text">
             <p className="text-base text-[#F4EBE1]/60 leading-relaxed font-light mb-8">
               Explore our collection of single-origin bars, signature truffles, and hand-wrapped gift boxes. Every batch is crafted in our chocolate workshop with the finest heirloom cacao beans.
@@ -407,8 +407,8 @@ function ExperienceSection() {
               />
             </div>
           </div>
-          <div className="experience-card bg-[#2B1E16] p-8 border border-[#C9A46B]/10 relative overflow-hidden flex flex-col md:flex-row gap-6 items-center">
-            <div className="w-full md:w-2/5 aspect-square overflow-hidden bg-[#231008] border border-[#C9A46B]/15">
+          <div className="experience-card bg-[#2B1E16] p-6 md:p-8 border border-[#C9A46B]/10 relative overflow-hidden flex flex-col gap-6">
+            <div className="w-full aspect-[4/3] overflow-hidden bg-[#231008] border border-[#C9A46B]/15">
               <img
                 src="/images/product-seasonal-set.jpg"
                 alt="Seasonal Set"
@@ -469,7 +469,7 @@ function JournalSection() {
           <SectionBadge>Journal</SectionBadge>
           <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6">Notes & Recipes</h2>
         </div>
-        <div className="journal-grid grid md:grid-cols-3 gap-6">
+        <div className="journal-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayPosts.map((post: any) => (
             <Link
               key={post.id}
@@ -533,12 +533,12 @@ function StorySection() {
           Myth Cocoa started with a question: what if chocolate tasted exactly like the farm it came from? 
           We visit growers, sample widely, and build recipes around the bean—not the other way around.
         </p>
-        <div className="bg-[#2B1E16] p-8 max-w-lg mx-auto">
+        <div className="bg-[#2B1E16] p-6 md:p-8 max-w-lg mx-auto">
           <p className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-4 font-medium">
             Get early access to small releases
           </p>
           <form
-            className="flex gap-2"
+            className="flex flex-col sm:flex-row gap-2"
             onSubmit={(e) => {
               e.preventDefault();
               toast.success("Thank you for subscribing!");
@@ -569,7 +569,7 @@ function ClosingSection() {
       <div className="max-w-4xl mx-auto px-6 text-center">
         <SectionBadge>Visit</SectionBadge>
         <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6 mb-12">Visit the chocolate store.</h2>
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-12">
           <div className="flex flex-col items-center">
             <MapPin size={20} className="text-[#C9A46B] mb-3" />
             <h4 className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-2 font-medium">Store Address</h4>

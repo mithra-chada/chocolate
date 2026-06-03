@@ -30,33 +30,45 @@ export function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const isHome = pathname === "/";
-  const showBg = scrolled || !isHome;
+  const showBg = scrolled || !isHome || menuOpen;
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           showBg
-            ? "bg-[#1B0F0A]/90 backdrop-blur-xl border-b border-[#C9A46B]/10"
+            ? "bg-[#1B0F0A]/95 backdrop-blur-xl border-b border-[#C9A46B]/10"
             : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between px-6 lg:px-12 h-16">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-12 h-14 md:h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="transition-transform group-hover:scale-110">
+          <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
+            <svg width="26" height="26" viewBox="0 0 28 28" fill="none" className="transition-transform group-hover:scale-110">
               <ellipse cx="14" cy="18" rx="10" ry="8" fill="#5C3A2A" />
               <ellipse cx="14" cy="18" rx="8" ry="6" fill="#3D2518" />
               <path d="M12 10 Q14 6 16 10" stroke="#C9A46B" strokeWidth="1.5" fill="none" />
               <circle cx="14" cy="7" r="2.5" fill="#C9A46B" />
               <path d="M12 5 L14 2 L16 5" stroke="#C9A46B" strokeWidth="1" fill="none" />
             </svg>
-            <span className="font-serif text-lg tracking-wide text-[#F4EBE1]">Myth Cocoa</span>
+            <span className="font-serif text-base sm:text-lg tracking-wide text-[#F4EBE1]">Myth Cocoa</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -72,48 +84,64 @@ export function Navbar() {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-4">
-
+          <div className="flex items-center gap-3">
             <button
               onClick={openCart}
-              className="relative text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors"
+              className="relative text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors p-1 -m-1"
               aria-label="Cart"
             >
               <ShoppingBag size={20} />
               {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#C9A46B] text-[#1B0F0A] text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#C9A46B] text-[#1B0F0A] text-[10px] font-bold rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors"
-              aria-label="Menu"
+              className="md:hidden text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors p-1 -m-1 touch-target"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#1B0F0A]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
+      <div
+        className={`fixed inset-0 z-40 bg-[#1B0F0A]/98 backdrop-blur-xl transition-all duration-300 md:hidden ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center min-h-screen gap-0 pt-16 pb-8">
           {navLinks.map((link, i) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-serif text-3xl text-[#F4EBE1] hover:text-[#C9A46B] transition-colors"
-              style={{ animationDelay: `${i * 80}ms` }}
+              className={`w-full text-center py-5 font-serif text-3xl transition-all duration-200 border-b border-[#C9A46B]/5 last:border-0 ${
+                pathname === link.href
+                  ? "text-[#C9A46B]"
+                  : "text-[#F4EBE1] hover:text-[#C9A46B]"
+              } ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              style={{ transitionDelay: menuOpen ? `${i * 50}ms` : "0ms" }}
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <button
+              onClick={() => { openCart(); setMenuOpen(false); }}
+              className="flex items-center gap-2 px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
+            >
+              <ShoppingBag size={14} />
+              View Cart {cartCount > 0 && `(${cartCount})`}
+            </button>
+          </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

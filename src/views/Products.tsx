@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { useCartStore } from "@/store/cartStore";
@@ -64,7 +64,7 @@ export default function Products() {
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#1B0F0A]/55 border border-[#C9A46B]/30 text-[#C9A46B] text-[10px] uppercase tracking-[0.18em] font-medium mb-4">
             Shop
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-[#F4EBE1] mb-4">The Collection</h1>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#F4EBE1] mb-4">The Collection</h1>
           <p className="text-base text-[#F4EBE1]/50 max-w-lg font-light">
             Each bar is a single-origin expression of its terroir. Taste the difference that rare beans and careful craft make.
           </p>
@@ -72,9 +72,11 @@ export default function Products() {
 
         {/* Filters */}
         <div className="max-w-6xl mx-auto px-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full md:w-72">
+          <div className="flex flex-col gap-4">
+            {/* Search + Sort Row */}
+            <div className="flex gap-3 items-center">
+              {/* Search */}
+              <div className="relative flex-1">
               <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#F4EBE1]/30" />
               <input
                 type="text"
@@ -83,10 +85,24 @@ export default function Products() {
                 placeholder="Search products..."
                 className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 pl-10 pr-4 py-2.5 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
               />
+              </div>
+              {/* Sort */}
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="bg-[#2B1E16] border border-[#C9A46B]/20 px-3 py-2.5 text-xs text-[#F4EBE1]/60 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                >
+                  {sortOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value} className="bg-[#2B1E16]">
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-
-            {/* Category Tabs */}
-            <div className="flex flex-wrap gap-2">
+            {/* Category Tabs - horizontal scroll on mobile */}
+            <div className="flex gap-2 overflow-x-auto pb-1 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-none flex-wrap md:flex-wrap">
               {categories.map((cat) => (
                 <button
                   key={cat.value}
@@ -101,29 +117,13 @@ export default function Products() {
                 </button>
               ))}
             </div>
-
-            {/* Sort */}
-            <div className="flex items-center gap-2">
-              <SlidersHorizontal size={14} className="text-[#C9A46B]" />
-              <select
-                value={sort}
-                onChange={(e) => setSort(e.target.value)}
-                className="bg-[#2B1E16] border border-[#C9A46B]/20 px-3 py-2.5 text-xs text-[#F4EBE1]/60 focus:border-[#C9A46B] focus:outline-none transition-colors"
-              >
-                {sortOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value} className="bg-[#2B1E16]">
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
         </div>
 
         {/* Product Grid */}
         <div className="max-w-6xl mx-auto px-6">
           {isLoading ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
               {[...Array(8)].map((_, i) => (
                 <div key={i} className="bg-[#2B1E16] animate-pulse">
                   <div className="aspect-[4/5] bg-[#1B0F0A]" />
@@ -136,7 +136,7 @@ export default function Products() {
               ))}
             </div>
           ) : products && products.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
               {products.map((product: any) => (
                 <div
                   key={product.id}

@@ -22,7 +22,7 @@ export default function Cart() {
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="font-serif text-5xl text-[#F4EBE1] mb-2">Your Cart</h1>
+          <h1 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mb-2">Your Cart</h1>
           <p className="text-sm text-[#F4EBE1]/50 mb-8">{count} items</p>
 
           {items.length === 0 ? (
@@ -40,12 +40,12 @@ export default function Cart() {
               </Link>
             </div>
           ) : (
-            <div className="grid md:grid-cols-[1fr_320px] gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-8">
               {/* Items */}
               <div className="space-y-6">
                 {items.map((item) => (
-                  <div key={item.id} className="flex gap-4 bg-[#2B1E16] p-4">
-                    <div className="w-24 h-24 bg-[#1B0F0A] flex-shrink-0 overflow-hidden">
+                  <div key={item.id} className="flex gap-3 sm:gap-4 bg-[#2B1E16] p-3 sm:p-4">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#1B0F0A] flex-shrink-0 overflow-hidden">
                       <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
       <img src={item.image} alt={item.name} className="w-full h-full object-cover" onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />
     </div>

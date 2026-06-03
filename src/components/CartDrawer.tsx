@@ -22,7 +22,7 @@ export function CartDrawer() {
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-md z-[70] bg-[#1B0F0A] border-l border-[#C9A46B]/20 flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full sm:max-w-md z-[70] bg-[#1B0F0A] border-l border-[#C9A46B]/20 flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#C9A46B]/10">
           <h2 className="font-serif text-2xl text-[#F4EBE1]">Cart</h2>

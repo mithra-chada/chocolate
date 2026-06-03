@@ -75,18 +75,18 @@ export default function ProductDetail() {
   return (
     <div className="bg-[#1B0F0A] min-h-screen">
       <Navbar />
-      <main className="pt-24 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
+      <main className="pt-14 md:pt-24 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#F4EBE1]/50 hover:text-[#C9A46B] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#F4EBE1]/50 hover:text-[#C9A46B] transition-colors mb-6 md:mb-8"
           >
             <ArrowLeft size={14} />
             Back to collection
           </Link>
 
-          <div className="grid md:grid-cols-[55%_45%] gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-6 md:gap-12">
             {/* Image Gallery */}
             <div>
               <div className="aspect-square bg-[#2B1E16] overflow-hidden mb-4">
@@ -127,7 +127,7 @@ export default function ProductDetail() {
                   <span className="text-[10px] uppercase tracking-[0.14em] font-medium text-[#C9A46B]">Seasonal Limited Edition</span>
                 </div>
               )}
-              <h1 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mb-2">{product.name}</h1>
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#F4EBE1] mb-2">{product.name}</h1>
               {product.nameCn && (
                 <p className="text-sm text-[#F4EBE1]/40 mb-4">{product.nameCn}</p>
               )}
@@ -164,18 +164,18 @@ export default function ProductDetail() {
               </div>
 
               {/* Quantity + Add to Cart */}
-              <div className="flex gap-4 mb-8">
+              <div className="flex gap-3 mb-6 md:mb-8">
                 <div className="flex items-center border border-[#C9A46B]/20">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-12 flex items-center justify-center text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors"
+                    className="w-11 h-12 flex items-center justify-center text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors"
                   >
                     <Minus size={14} />
                   </button>
                   <span className="w-10 text-center text-sm text-[#F4EBE1]">{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-12 flex items-center justify-center text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors"
+                    className="w-11 h-12 flex items-center justify-center text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors"
                   >
                     <Plus size={14} />
                   </button>
