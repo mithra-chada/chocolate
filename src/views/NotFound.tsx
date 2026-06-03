@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
@@ -11,7 +11,7 @@ export default function NotFound() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
         >
           <ArrowLeft size={14} />

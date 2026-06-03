@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const footerLinks = {
@@ -34,7 +34,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
         {/* Top Section */}
         <div className="flex flex-col items-center mb-12">
-          <Link to="/" className="flex items-center gap-2 mb-4">
+          <Link href="/" className="flex items-center gap-2 mb-4">
             <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
               <ellipse cx="14" cy="18" rx="10" ry="8" fill="#5C3A2A" />
               <ellipse cx="14" cy="18" rx="8" ry="6" fill="#3D2518" />
@@ -54,7 +54,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.shop.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
+                  <Link href={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -66,7 +66,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.process.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
+                  <Link href={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -78,7 +78,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.visit.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
+                  <Link href={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -90,7 +90,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
+                  <Link href={link.href} className="text-sm text-[#F4EBE1]/60 hover:text-[#C9A46B] transition-colors">
                     {link.label}
                   </Link>
                 </li>

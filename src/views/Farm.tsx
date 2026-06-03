@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
@@ -166,7 +166,7 @@ export default function Farm() {
               Walk the grove, taste cacao fresh from the pod, and see how we turn rare beans into chocolate.
             </p>
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
             >
               Book a Tasting <ArrowRight size={14} />

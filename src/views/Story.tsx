@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
@@ -116,7 +116,7 @@ export default function Story() {
             <div className="story-section text-center pt-16">
               <h2 className="font-serif text-3xl text-[#F4EBE1] mb-6">Taste the difference</h2>
               <Link
-                to="/products"
+                href="/products"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
               >
                 Shop the Collection <ArrowRight size={14} />

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
@@ -43,7 +43,7 @@ export function CartDrawer() {
               <p className="font-serif text-xl text-[#F4EBE1]/60 mb-2">Your cart is empty</p>
               <p className="text-sm text-[#F4EBE1]/40 mb-6">Explore our collection of artisan chocolates</p>
               <Link
-                to="/products"
+                href="/products"
                 onClick={closeCart}
                 className="px-6 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
               >
@@ -133,7 +133,7 @@ export function CartDrawer() {
 
             {/* Actions */}
             <Link
-              to="/checkout"
+              href="/checkout"
               onClick={closeCart}
               className="block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-center text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
             >

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ChevronDown, MapPin, Phone, Clock } from "lucide-react";
@@ -94,13 +94,13 @@ function HeroSection() {
         </p>
         <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            to="/story"
+            href="/story"
             className="px-8 py-3 border border-[#F4EBE1]/30 text-[#F4EBE1] text-xs uppercase tracking-[0.08em] font-medium hover:border-[#C9A46B] hover:text-[#C9A46B] transition-all"
           >
             Explore the Story
           </Link>
           <Link
-            to="/products"
+            href="/products"
             className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
           >
             Shop Collection
@@ -286,7 +286,7 @@ function CollectionSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleAddToCart = (product: typeof products extends (infer T)[] | undefined ? T : never) => {
+  const handleAddToCart = (product: any) => {
     if (!product) return;
     addItem({
       productId: product.id,
@@ -309,12 +309,12 @@ function CollectionSection() {
           <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6">Bars & Bonbons</h2>
         </div>
         <div className="collection-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayProducts.map((product) => (
+          {displayProducts.map((product: any) => (
             <div
               key={product.id}
               className="collection-card group relative bg-[#2B1E16] overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
             >
-              <Link to={`/products/${product.slug}`} className="block">
+              <Link href={`/products/${product.slug}`} className="block">
                 <div className="aspect-[4/5] overflow-hidden">
                   <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
       <img
@@ -349,13 +349,13 @@ function CollectionSection() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link
-            to="/products"
+            href="/products"
             className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-colors"
           >
             See the full collection
           </Link>
           <Link
-            to="/products?category=gift"
+            href="/products?category=gift"
             className="px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] font-medium text-center hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
           >
             Build a gift box
@@ -428,7 +428,7 @@ function ExperienceSection() {
                 <p className="font-serif text-lg text-[#C9A46B] mb-5">{formatPrice(3999)}</p>
               </div>
               <Link
-                to="/products"
+                href="/products"
                 className="inline-block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-colors"
               >
                 Shop Collection
@@ -470,10 +470,10 @@ function JournalSection() {
           <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6">Notes & Recipes</h2>
         </div>
         <div className="journal-grid grid md:grid-cols-3 gap-6">
-          {displayPosts.map((post) => (
+          {displayPosts.map((post: any) => (
             <Link
               key={post.id}
-              to={`/journal/${post.slug}`}
+              href={`/journal/${post.slug}`}
               className="journal-card group block"
             >
               <div className="aspect-[16/10] overflow-hidden mb-4">
@@ -497,7 +497,7 @@ function JournalSection() {
         </div>
         <div className="text-center mt-12">
           <Link
-            to="/journal"
+            href="/journal"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#C9A46B] hover:text-[#F4EBE1] transition-colors"
           >
             Read more on the journal <ArrowRight size={14} />
@@ -587,7 +587,7 @@ function ClosingSection() {
           </div>
         </div>
         <Link
-          to="/contact"
+          href="/contact"
           className="inline-block px-10 py-4 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
         >
           Get Directions

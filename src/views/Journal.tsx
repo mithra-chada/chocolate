@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -53,7 +53,7 @@ export default function Journal() {
     }
   }, [posts, isLoading]);
 
-  const filteredPosts = posts?.filter((post) =>
+  const filteredPosts = posts?.filter((post: any) =>
     search ? post.title.toLowerCase().includes(search.toLowerCase()) : true
   );
 
@@ -117,10 +117,10 @@ export default function Journal() {
             </div>
           ) : filteredPosts && filteredPosts.length > 0 ? (
             <div ref={gridRef} className="grid md:grid-cols-3 gap-8">
-              {filteredPosts.map((post) => (
+              {filteredPosts.map((post: any) => (
                 <Link
                   key={post.id}
-                  to={`/journal/${post.slug}`}
+                  href={`/journal/${post.slug}`}
                   className="journal-card group block opacity-0"
                 >
                   <div className="aspect-[16/10] overflow-hidden mb-4">

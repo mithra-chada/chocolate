@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 
@@ -17,7 +18,7 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const cartCount = useCartStore((s) => s.getCount());
   const openCart = useCartStore((s) => s.openCart);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -27,9 +28,9 @@ export function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
-  const isHome = location.pathname === "/";
+  const isHome = pathname === "/";
   const showBg = scrolled || !isHome;
 
   return (
@@ -43,7 +44,7 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between px-6 lg:px-12 h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="transition-transform group-hover:scale-110">
               <ellipse cx="14" cy="18" rx="10" ry="8" fill="#5C3A2A" />
               <ellipse cx="14" cy="18" rx="8" ry="6" fill="#3D2518" />
@@ -59,9 +60,9 @@ export function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 className={`text-xs uppercase tracking-[0.18em] font-medium transition-colors hover:text-[#C9A46B] relative group ${
-                  location.pathname === link.href ? "text-[#C9A46B]" : "text-[#F4EBE1]/70"
+                  pathname === link.href ? "text-[#C9A46B]" : "text-[#F4EBE1]/70"
                 }`}
               >
                 {link.label}
@@ -102,7 +103,7 @@ export function Navbar() {
           {navLinks.map((link, i) => (
             <Link
               key={link.href}
-              to={link.href}
+              href={link.href}
               className="font-serif text-3xl text-[#F4EBE1] hover:text-[#C9A46B] transition-colors"
               style={{ animationDelay: `${i * 80}ms` }}
               onClick={() => setMenuOpen(false)}

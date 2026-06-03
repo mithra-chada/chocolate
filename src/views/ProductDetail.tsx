@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Star, Plus, Minus, Leaf } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -10,7 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatPrice } from "@/lib/utils";
 
 export default function ProductDetail() {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams();
+  const slug = params?.slug as string;
   const { data: product, isLoading } = trpc.product.bySlug.useQuery({ slug: slug || "" });
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -45,7 +47,7 @@ export default function ProductDetail() {
         <Navbar />
         <div className="pt-24 pb-16 max-w-6xl mx-auto px-6 text-center py-24">
           <p className="font-serif text-2xl text-[#F4EBE1]/40 mb-4">Product not found</p>
-          <Link to="/products" className="text-[#C9A46B] hover:text-[#F4EBE1] transition-colors text-sm">
+          <Link href="/products" className="text-[#C9A46B] hover:text-[#F4EBE1] transition-colors text-sm">
             Back to collection
           </Link>
         </div>
@@ -77,7 +79,7 @@ export default function ProductDetail() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Breadcrumb */}
           <Link
-            to="/products"
+            href="/products"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#F4EBE1]/50 hover:text-[#C9A46B] transition-colors mb-8"
           >
             <ArrowLeft size={14} />

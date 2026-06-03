@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Clock, User } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { trpc } from "@/providers/trpc";
 
 export default function BlogPost() {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams();
+  const slug = params?.slug as string;
   const { data: post, isLoading } = trpc.blog.bySlug.useQuery({ slug: slug || "" });
   const { data: relatedPosts } = trpc.blog.list.useQuery();
 
@@ -38,7 +40,7 @@ export default function BlogPost() {
         <Navbar />
         <div className="pt-24 pb-16 max-w-3xl mx-auto px-6 text-center py-24">
           <p className="font-serif text-2xl text-[#F4EBE1]/40 mb-4">Article not found</p>
-          <Link to="/journal" className="text-[#C9A46B] hover:text-[#F4EBE1] transition-colors text-sm">
+          <Link href="/journal" className="text-[#C9A46B] hover:text-[#F4EBE1] transition-colors text-sm">
             Back to journal
           </Link>
         </div>
@@ -47,7 +49,7 @@ export default function BlogPost() {
     );
   }
 
-  const related = relatedPosts?.filter((p) => p.id !== post.id).slice(0, 3) || [];
+  const related = relatedPosts?.filter((p: any) => p.id !== post.id).slice(0, 3) || [];
 
   return (
     <div className="bg-[#1B0F0A] min-h-screen">
@@ -56,7 +58,7 @@ export default function BlogPost() {
         <article className="max-w-3xl mx-auto px-6">
           {/* Back */}
           <Link
-            to="/journal"
+            href="/journal"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#F4EBE1]/50 hover:text-[#C9A46B] transition-colors mb-8"
           >
             <ArrowLeft size={14} />
@@ -114,8 +116,8 @@ export default function BlogPost() {
           <div className="max-w-3xl mx-auto px-6 mt-16 pt-16 border-t border-[#C9A46B]/10">
             <h3 className="font-serif text-2xl text-[#F4EBE1] mb-6">More from the journal</h3>
             <div className="space-y-6">
-              {related.map((rp) => (
-                <Link key={rp.id} to={`/journal/${rp.slug}`} className="flex gap-4 group">
+              {related.map((rp: any) => (
+                <Link key={rp.id} href={`/journal/${rp.slug}`} className="flex gap-4 group">
                   <div className="w-24 h-16 bg-[#2B1E16] flex-shrink-0 overflow-hidden">
                     <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
       <img src={rp.image || "/images/journal-ganache.jpg"} alt={rp.title} className="w-full h-full object-cover" onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />

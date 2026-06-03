@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router";
+import Link from "next/link";
 import { ShoppingBag, Plus, Minus, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -8,7 +8,6 @@ import { formatPrice } from "@/lib/utils";
 
 export default function Cart() {
   const { items, updateQuantity, removeItem, clearCart, getTotal, getCount } = useCartStore();
-  const navigate = useNavigate();
   const total = getTotal();
   const count = getCount();
   const freeShippingThreshold = 5000;
@@ -34,7 +33,7 @@ export default function Cart() {
                 Explore our collection of artisan chocolates
               </p>
               <Link
-                to="/products"
+                href="/products"
                 className="inline-block px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
               >
                 Continue Shopping
@@ -54,7 +53,7 @@ export default function Cart() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between">
                         <div>
-                          <Link to={`/products`} className="font-serif text-lg text-[#F4EBE1] hover:text-[#C9A46B] transition-colors">
+                          <Link href="/products" className="font-serif text-lg text-[#F4EBE1] hover:text-[#C9A46B] transition-colors">
                             {item.name}
                           </Link>
                           {item.variant && <p className="text-xs text-[#F4EBE1]/40 mt-0.5">{item.variant}</p>}
@@ -133,14 +132,14 @@ export default function Cart() {
                   <span className="font-serif italic text-2xl text-[#C9A46B]">{formatPrice(total)}</span>
                 </div>
 
-                <button
-                  onClick={() => navigate("/checkout")}
-                  className="w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors mb-3"
+                <Link
+                  href="/checkout"
+                  className="block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-center text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors mb-3"
                 >
                   Checkout
-                </button>
+                </Link>
                 <Link
-                  to="/products"
+                  href="/products"
                   className="block w-full py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-center text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
                 >
                   Continue Shopping

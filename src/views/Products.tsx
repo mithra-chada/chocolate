@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -25,9 +26,9 @@ const sortOptions = [
 ];
 
 export default function Products() {
-  const [searchParams] = useSearchParams();
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState(searchParams.get("category") || "");
+  const [activeCategory, setActiveCategory] = useState(searchParams?.get("category") || "");
   const [sort, setSort] = useState("newest");
 
   const { data: products, isLoading } = trpc.product.list.useQuery({
@@ -136,12 +137,12 @@ export default function Products() {
             </div>
           ) : products && products.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.map((product) => (
+              {products.map((product: any) => (
                 <div
                   key={product.id}
                   className="group relative bg-[#2B1E16] overflow-hidden"
                 >
-                  <Link to={`/products/${product.slug}`} className="block">
+                  <Link href={`/products/${product.slug}`} className="block">
                     <div className="aspect-[4/5] overflow-hidden relative">
                       <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
       <img

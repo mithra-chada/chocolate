@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { Check, IceCreamCone, ArrowLeft, CreditCard } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { useCartStore } from "@/store/cartStore";
@@ -10,7 +10,7 @@ import { formatPrice } from "@/lib/utils";
 const steps = ["Contact", "Shipping", "Payment", "Review"];
 
 export default function Checkout() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { items, getTotal, clearCart, sessionId } = useCartStore();
   const createOrder = trpc.order.create.useMutation();
   const [currentStep, setCurrentStep] = useState(0);
@@ -38,9 +38,9 @@ export default function Checkout() {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (items.length === 0 && !isComplete) {
-      navigate("/cart");
+      router.push("/cart");
     }
-  }, [items, isComplete, navigate]);
+  }, [items, isComplete, router]);
 
   const updateForm = (key: string, value: string | boolean) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -94,7 +94,7 @@ export default function Checkout() {
             We'll send a confirmation email shortly.
           </p>
           <button
-            onClick={() => navigate("/products")}
+            onClick={() => router.push("/products")}
             className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
           >
             Continue Shopping
@@ -111,7 +111,7 @@ export default function Checkout() {
         <div className="max-w-4xl mx-auto px-6">
           {/* Back + Title */}
           <button
-            onClick={() => navigate("/cart")}
+            onClick={() => router.push("/cart")}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-[#F4EBE1]/50 hover:text-[#C9A46B] transition-colors mb-8"
           >
             <ArrowLeft size={14} />
