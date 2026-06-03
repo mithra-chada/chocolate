@@ -85,23 +85,23 @@ function HeroSection() {
       <ChocolateChip className="absolute top-[40%] left-[5%] choco-chip" size="md" />
 
       {/* Content */}
-      <div ref={contentRef} className="relative z-[2] text-center px-6">
+      <div ref={contentRef} className="relative z-[2] text-center px-6 pt-14 md:pt-0">
         <h1 className="hero-title font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F4EBE1] mb-4 leading-[0.95]">
           Myth Cocoa
         </h1>
         <p className="hero-subtitle font-sans text-base md:text-lg text-[#F4EBE1]/70 max-w-md mx-auto mb-10 font-light">
           Single-origin chocolate, crafted in small batches.
         </p>
-        <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="hero-cta flex flex-col items-center sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href="/story"
-            className="px-8 py-3 border border-[#F4EBE1]/30 text-[#F4EBE1] text-xs uppercase tracking-[0.08em] font-medium hover:border-[#C9A46B] hover:text-[#C9A46B] transition-all"
+            className="w-full sm:w-auto px-8 py-3.5 border border-[#F4EBE1]/30 text-[#F4EBE1] text-xs uppercase tracking-[0.08em] font-medium hover:border-[#C9A46B] hover:text-[#C9A46B] transition-all text-center"
           >
             Explore the Story
           </Link>
           <Link
             href="/products"
-            className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors text-center"
           >
             Shop Collection
           </Link>

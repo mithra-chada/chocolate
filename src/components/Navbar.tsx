@@ -16,10 +16,14 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const cartCount = useCartStore((s) => s.getCount());
   const openCart = useCartStore((s) => s.openCart);
   const pathname = usePathname();
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -91,7 +95,7 @@ export function Navbar() {
               aria-label="Cart"
             >
               <ShoppingBag size={20} />
-              {cartCount > 0 && (
+              {mounted && cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#C9A46B] text-[#1B0F0A] text-[10px] font-bold rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
@@ -137,7 +141,7 @@ export function Navbar() {
               className="flex items-center gap-2 px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
             >
               <ShoppingBag size={14} />
-              View Cart {cartCount > 0 && `(${cartCount})`}
+              View Cart {mounted && cartCount > 0 && `(${cartCount})`}
             </button>
           </div>
         </div>
