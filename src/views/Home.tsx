@@ -74,22 +74,22 @@ function HeroSection() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-[0]"
         />
-        <div className="absolute inset-0 bg-[#1a0c06]/70 md:bg-[#1a0c06]/[0.65] z-[1]" />
+        <div className="absolute inset-0 bg-[#1a0c06]/75 md:bg-[#1a0c06]/[0.65] z-[1]" />
       </div>
 
-      {/* Chocolate Chips */}
-      <ChocolateChip className="absolute top-[15%] left-[8%] choco-chip" size="sm" />
-      <ChocolateChip className="absolute top-[20%] right-[12%] choco-chip" size="md" />
-      <ChocolateChip className="absolute bottom-[25%] left-[15%] choco-chip" size="lg" />
-      <ChocolateChip className="absolute bottom-[30%] right-[8%] choco-chip" size="sm" />
-      <ChocolateChip className="absolute top-[40%] left-[5%] choco-chip" size="md" />
+      {/* Chocolate Chips – hidden on small screens to reduce noise */}
+      <ChocolateChip className="absolute top-[15%] left-[8%] choco-chip hidden sm:block" size="sm" />
+      <ChocolateChip className="absolute top-[20%] right-[12%] choco-chip hidden sm:block" size="md" />
+      <ChocolateChip className="absolute bottom-[25%] left-[15%] choco-chip hidden sm:block" size="lg" />
+      <ChocolateChip className="absolute bottom-[30%] right-[8%] choco-chip hidden sm:block" size="sm" />
+      <ChocolateChip className="absolute top-[40%] left-[5%] choco-chip hidden sm:block" size="md" />
 
-      {/* Content */}
-      <div ref={contentRef} className="relative z-[2] text-center px-6 pt-14 md:pt-0">
+      {/* Content — centered in viewport; no extra top padding needed */}
+      <div ref={contentRef} className="relative z-[2] text-center px-6 w-full max-w-lg">
         <h1 className="hero-title font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F4EBE1] mb-4 leading-[0.95]">
           Myth Cocoa
         </h1>
-        <p className="hero-subtitle font-sans text-base md:text-lg text-[#F4EBE1]/70 max-w-md mx-auto mb-10 font-light">
+        <p className="hero-subtitle font-sans text-sm md:text-lg text-[#F4EBE1]/70 mx-auto mb-8 font-light">
           Single-origin chocolate, crafted in small batches.
         </p>
         <div className="hero-cta flex flex-col items-center sm:flex-row gap-3 sm:gap-4 justify-center">
@@ -153,12 +153,12 @@ function PromiseSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 bg-[#1B0F0A]">
+    <section ref={sectionRef} className="relative py-16 md:py-32 bg-[#1B0F0A]">
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="promise-title font-serif text-4xl md:text-5xl text-[#F4EBE1] mb-16">
+        <h2 className="promise-title font-serif text-3xl md:text-5xl text-[#F4EBE1] mb-10 md:mb-16">
           Small batches. Real origin.
         </h2>
-        <div className="promise-stats grid grid-cols-3 gap-4 md:gap-16 mb-16">
+        <div className="promise-stats grid grid-cols-3 gap-4 md:gap-16 mb-10 md:mb-16">
           <div className="promise-stat">
             <span className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#C9A46B]">80+</span>
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.18em] text-[#F4EBE1]/50 mt-2 sm:mt-3">Cacao varieties</p>
@@ -172,7 +172,7 @@ function PromiseSection() {
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.18em] text-[#F4EBE1]/50 mt-2 sm:mt-3">Slow conching</p>
           </div>
         </div>
-        <p className="promise-text text-base text-[#F4EBE1]/60 max-w-2xl mx-auto leading-relaxed font-light">
+        <p className="promise-text text-sm md:text-base text-[#F4EBE1]/60 max-w-2xl mx-auto leading-relaxed font-light">
           We work directly with growers, select by flavor, and roast in micro-lots. 
           The result is a bar that tastes like the place it came from.
         </p>
@@ -230,9 +230,9 @@ function ProcessSection({
   }, [direction]);
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-[60vh] md:min-h-[80vh] flex items-end md:items-center overflow-hidden">
+    <section ref={sectionRef} className="relative w-full min-h-[50vh] md:min-h-[80vh] flex items-end md:items-center overflow-hidden">
       <div className="process-image absolute inset-0">
-        <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
+        <div className="w-full h-full overflow-hidden bg-[#231008]">
           <img
             ref={(el) => {
               if (el && el.complete) {
@@ -248,17 +248,18 @@ function ProcessSection({
             onLoad={(e) => e.currentTarget.classList.add('img-loaded')}
           />
         </div>
-        <div className="absolute inset-0 bg-[#1B0F0A]/50" />
+        {/* Stronger gradient at bottom on mobile for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1B0F0A]/90 via-[#1B0F0A]/40 to-transparent md:bg-[#1B0F0A]/50" />
       </div>
-      <div className={`relative z-10 w-full max-w-xl px-6 py-10 md:px-16 md:py-0 ${direction === "left" ? "md:ml-auto md:text-right" : ""}`}>
+      <div className={`relative z-10 w-full max-w-xl px-6 py-8 md:px-16 md:py-0 ${direction === "left" ? "md:ml-auto md:text-right" : ""}`}>
         <div className="process-content">
           <SectionBadge>Process</SectionBadge>
-          <div className="mt-6 mb-4">
-            <span className="font-serif italic text-7xl text-[#C9A46B]/30">{step}</span>
+          <div className="mt-4 mb-2 md:mt-6 md:mb-4">
+            <span className="font-serif italic text-5xl md:text-7xl text-[#C9A46B]/30">{step}</span>
           </div>
-          <p className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-3 font-medium">{label}</p>
-          <h3 className="font-serif text-2xl md:text-4xl text-[#F4EBE1] mb-4 leading-tight">{title}</h3>
-          <p className="text-sm md:text-base text-[#F4EBE1]/60 leading-relaxed font-light">{body}</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-2 md:mb-3 font-medium">{label}</p>
+          <h3 className="font-serif text-2xl md:text-4xl text-[#F4EBE1] mb-3 md:mb-4 leading-tight">{title}</h3>
+          <p className="text-sm md:text-base text-[#F4EBE1]/70 leading-relaxed font-light">{body}</p>
         </div>
       </div>
     </section>
@@ -308,7 +309,7 @@ function CollectionSection() {
           <SectionBadge>Shop</SectionBadge>
           <h2 className="font-serif text-4xl md:text-5xl text-[#F4EBE1] mt-6">Bars & Bonbons</h2>
         </div>
-        <div className="collection-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="collection-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {displayProducts.map((product: any) => (
             <div
               key={product.id}
