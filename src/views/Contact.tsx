@@ -167,7 +167,7 @@ export default function Contact() {
                       <Phone size={18} className="text-[#C9A46B] mt-0.5 flex-shrink-0" />
                       <div>
                         <h4 className="text-xs uppercase tracking-[0.14em] text-[#C9A46B] mb-1 font-medium">Phone</h4>
-                        <p className="text-sm text-[#F4EBE1]/60 font-light">+91 98765 43210</p>
+                        <p className="text-sm text-[#F4EBE1]/60 font-light">+91 70751 4788</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -260,7 +260,7 @@ export default function Contact() {
               <div className="mt-8 p-6 bg-[#25D366]/10 border border-[#25D366]/20 text-center">
                 <p className="text-sm text-[#F4EBE1]/60 mb-4 font-light">Prefer to chat?</p>
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Myth%20Cocoa%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20chocolates"
+                  href="https://wa.me/91707514788?text=Hi%20Myth%20Cocoa%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20chocolates"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#128C7E] transition-colors animate-pulse-glow"

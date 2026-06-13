@@ -1,7 +1,7 @@
 export interface Product {
   id: number;
   name: string;
-  nameCn?: string | null;
+
   slug: string;
   description: string;
   price: number;
@@ -37,7 +37,6 @@ export const mockProducts: Product[] = [
   {
     id: 1,
     name: "Mythical Dark Single-Origin",
-    nameCn: "神话单源黑巧克力",
     slug: "mythical-dark-single-origin",
     description: "Our signature bar. Crafted from rare 75% heirloom Criollo beans sourced from our foothills estate. Experience notes of wild blackberry, roasted macadamia, and a warm honeyed finish.",
     price: 349,
@@ -59,7 +58,6 @@ export const mockProducts: Product[] = [
   {
     id: 2,
     name: "Golden Milk Silk",
-    nameCn: "黄金丝滑牛奶巧克力",
     slug: "golden-milk-silk",
     description: "A rich 45% milk chocolate that redefines the category. Made with organic grass-fed milk and heirloom cacao, finished with a pinch of hand-harvested fleur de sel and Madagascar vanilla.",
     price: 299,
@@ -81,7 +79,6 @@ export const mockProducts: Product[] = [
   {
     id: 3,
     name: "The Signature Collection",
-    nameCn: "经典典藏礼盒",
     slug: "the-signature-collection",
     description: "A gorgeous curated box containing our bestseller dark and milk chocolate bars, paired with a custom wooden tasting board and flavor-mapping guide.",
     price: 749,
@@ -103,7 +100,6 @@ export const mockProducts: Product[] = [
   {
     id: 4,
     name: "Heirloom Ganache Bonbons",
-    nameCn: "传世甘纳许手工夹心巧克力",
     slug: "heirloom-ganache-bonbons",
     description: "An exquisite 12-piece assortment of hand-painted bonbons. Filled with silky single-origin ganache, salted caramel, infused botanicals, and seasonal fruit reductions.",
     price: 699,
@@ -125,7 +121,6 @@ export const mockProducts: Product[] = [
   {
     id: 5,
     name: "Ceremonial Cacao Nib Blend",
-    nameCn: "仪式级可可碎混拼",
     slug: "ceremonial-cacao-nib-blend",
     description: "Gently roasted, lightly crushed heirloom cacao nibs. Packed with antioxidants and rich chocolate aroma. Perfect for breakfast bowls, baking, or straight snacking.",
     price: 399,
@@ -147,7 +142,6 @@ export const mockProducts: Product[] = [
   {
     id: 6,
     name: "Wild-Harvested Cacao Powder",
-    nameCn: "野生熟成纯可可粉",
     slug: "wild-harvested-cacao-powder",
     description: "Superfood grade, cold-pressed raw cacao powder. Rich, intense chocolate flavor with zero sugar. Ideal for premium baking, smoothies, or functional drinks.",
     price: 349,
@@ -169,7 +163,6 @@ export const mockProducts: Product[] = [
   {
     id: 7,
     name: "Roasted Heirloom Beans",
-    nameCn: "烘焙传世级原豆",
     slug: "roasted-heirloom-beans",
     description: "Whole cacao beans roasted to highlight their natural floral and fruit profile. Crack and peel to enjoy the purest chocolate taste experience.",
     price: 299,
@@ -191,7 +184,6 @@ export const mockProducts: Product[] = [
   {
     id: 8,
     name: "Artisan Fleur de Sel Dark",
-    nameCn: "海盐手工黑巧克力",
     slug: "artisan-fleur-de-sel-dark",
     description: "A exquisite combination of 70% dark chocolate and delicate crystals of hand-harvested sea salt. The perfect balance of sweet, bitter, and savory.",
     price: 329,
@@ -213,7 +205,6 @@ export const mockProducts: Product[] = [
   {
     id: 9,
     name: "Single-Origin Pod Selection",
-    nameCn: "单源地巧克力拼套",
     slug: "single-origin-pod-selection",
     description: "Three micro-batch bars, each showcasing the distinct terroir of Madagascar, Ecuador, and our estate. Complete with analytical tasting wheels.",
     price: 649,
@@ -235,7 +226,6 @@ export const mockProducts: Product[] = [
   {
     id: 10,
     name: "Madagascar Vanilla Milk",
-    nameCn: "马达加斯加香草牛奶巧克力",
     slug: "madagascar-vanilla-milk",
     description: "A premium 38% milk chocolate infused with fragrant, freshly-scraped Madagascar Bourbon vanilla beans and organic raw milk solids.",
     price: 289,

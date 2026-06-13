@@ -128,9 +128,7 @@ export default function ProductDetail() {
                 </div>
               )}
               <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#F4EBE1] mb-2">{product.name}</h1>
-              {product.nameCn && (
-                <p className="text-sm text-[#F4EBE1]/40 mb-4">{product.nameCn}</p>
-              )}
+
               <div className="flex items-center gap-3 mb-6">
                 <span className="font-serif italic text-3xl text-[#C9A46B]">{formatPrice(Number(product.price))}</span>
                 {product.comparePrice && (

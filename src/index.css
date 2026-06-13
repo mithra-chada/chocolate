@@ -34,6 +34,8 @@
     --sidebar-accent-foreground: 30 30% 93%;
     --sidebar-border: 30 15% 20%;
     --sidebar-ring: 38 42% 60%;
+    --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
   }
 }
 
@@ -43,9 +45,10 @@
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
-    @apply bg-[#1B0F0A] text-[#F4EBE1] antialiased;
+    @apply bg-[#1B0F0A] text-[#F4EBE1] antialiased overflow-x-hidden w-full;
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -153,8 +156,6 @@
 .clip-revealed {
   clip-path: inset(0 0 0 0);
 }
-img { opacity: 0; transition: opacity 0.6s ease-in-out; }
-img.img-loaded { opacity: 1; }
 
 /* Mobile utilities */
 /* Minimum touch target size */

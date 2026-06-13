@@ -36,13 +36,13 @@ function HeroSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".hero-title",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+        { y: "50%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
       );
       gsap.fromTo(
         ".hero-subtitle",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, ease: "power2.out", delay: 0.5 }
+        { y: "30%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 0.9, ease: "power2.out", delay: 0.5 }
       );
       gsap.fromTo(
         ".hero-cta",
@@ -95,24 +95,19 @@ function HeroSection() {
         <div className="hero-cta flex flex-col items-center sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href="/story"
-            className="w-full sm:w-auto px-8 py-3.5 border border-[#F4EBE1]/30 text-[#F4EBE1] text-xs uppercase tracking-[0.08em] font-medium hover:border-[#C9A46B] hover:text-[#C9A46B] transition-all text-center"
+            className="w-full sm:w-auto px-8 py-3.5 border border-[#F4EBE1]/30 text-[#F4EBE1] text-xs uppercase tracking-[0.08em] font-medium hover:border-[#C9A46B] hover:text-[#C9A46B] transition-[color,border-color,transform] duration-200 ease-out-strong active:scale-[0.97] text-center"
           >
             Explore the Story
           </Link>
           <Link
             href="/products"
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors text-center"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-[background-color,color,transform] duration-200 ease-out-strong active:scale-[0.97] text-center"
           >
             Shop Collection
           </Link>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#F4EBE1]/40">
-        <span className="text-[10px] uppercase tracking-[0.18em]">Scroll</span>
-        <ChevronDown size={16} className="animate-bounce" />
-      </div>
     </section>
   );
 }
@@ -125,26 +120,26 @@ function PromiseSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".promise-title",
-        { y: 40, opacity: 0 },
+        { y: "40%", opacity: 0 },
         {
-          y: 0, opacity: 1,
+          y: "0%", opacity: 1,
           scrollTrigger: { trigger: sectionRef.current, start: "top 80%", end: "top 55%", scrub: true },
         }
       );
       gsap.fromTo(
         ".promise-stat",
-        { y: 60, scale: 0.96, opacity: 0 },
+        { y: "60%", scale: 0.96, opacity: 0 },
         {
-          y: 0, scale: 1, opacity: 1,
+          y: "0%", scale: 1, opacity: 1,
           stagger: 0.15,
           scrollTrigger: { trigger: ".promise-stats", start: "top 80%", end: "top 50%", scrub: true },
         }
       );
       gsap.fromTo(
         ".promise-text",
-        { y: 40, opacity: 0 },
+        { y: "40%", opacity: 0 },
         {
-          y: 0, opacity: 1,
+          y: "0%", opacity: 1,
           scrollTrigger: { trigger: ".promise-text", start: "top 85%", end: "top 60%", scrub: true },
         }
       );
@@ -203,9 +198,9 @@ function ProcessSection({
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".process-content",
-        { x: direction === "right" ? 80 : direction === "left" ? -80 : 0, y: direction === "bottom" ? 60 : 0, opacity: 0 },
+        { x: direction === "right" ? "20%" : direction === "left" ? "-20%" : "0%", y: direction === "bottom" ? "20%" : "0%", opacity: 0 },
         {
-          x: 0, y: 0, opacity: 1,
+          x: "0%", y: "0%", opacity: 1,
           scrollTrigger: { trigger: sectionRef.current, start: "top 65%", end: "top 35%", scrub: 0.6 },
         }
       );
@@ -276,9 +271,9 @@ function CollectionSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".collection-card",
-        { y: 70, opacity: 0, rotateX: 8 },
+        { y: "20%", opacity: 0, rotateX: 8 },
         {
-          y: 0, opacity: 1, rotateX: 0,
+          y: "0%", opacity: 1, rotateX: 0,
           stagger: 0.1,
           scrollTrigger: { trigger: ".collection-grid", start: "top 80%", end: "top 40%", scrub: true },
         }
@@ -341,7 +336,7 @@ function CollectionSection() {
                   e.preventDefault();
                   handleAddToCart(product);
                 }}
-                className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out-strong active:scale-[0.97]"
               >
                 Add to Cart
               </button>
@@ -351,13 +346,13 @@ function CollectionSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link
             href="/products"
-            className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-colors"
+            className="px-8 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-[background-color,color,transform] duration-200 ease-out-strong active:scale-[0.97]"
           >
             See the full collection
           </Link>
           <Link
             href="/products?category=gift"
-            className="px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] font-medium text-center hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
+            className="px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] font-medium text-center hover:border-[#C9A46B] hover:text-[#C9A46B] transition-[color,border-color,transform] duration-200 ease-out-strong active:scale-[0.97]"
           >
             Build a gift box
           </Link>
@@ -375,13 +370,13 @@ function ExperienceSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".experience-text",
-        { x: -60, opacity: 0 },
-        { x: 0, opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 75%", end: "top 45%", scrub: true } }
+        { x: "-15%", opacity: 0 },
+        { x: "0%", opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 75%", end: "top 45%", scrub: true } }
       );
       gsap.fromTo(
         ".experience-card",
-        { x: 60, opacity: 0 },
-        { x: 0, opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 70%", end: "top 40%", scrub: true } }
+        { x: "15%", opacity: 0 },
+        { x: "0%", opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 70%", end: "top 40%", scrub: true } }
       );
     }, sectionRef);
     return () => ctx.revert();
@@ -430,7 +425,7 @@ function ExperienceSection() {
               </div>
               <Link
                 href="/products"
-                className="inline-block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-colors"
+                className="inline-block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium text-center hover:bg-[#F4EBE1] transition-[background-color,color,transform] duration-200 ease-out-strong active:scale-[0.97]"
               >
                 Shop Collection
               </Link>
@@ -451,9 +446,9 @@ function JournalSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".journal-card",
-        { y: 70, opacity: 0 },
+        { y: "20%", opacity: 0 },
         {
-          y: 0, opacity: 1, stagger: 0.1,
+          y: "0%", opacity: 1, stagger: 0.1,
           scrollTrigger: { trigger: ".journal-grid", start: "top 80%", end: "top 40%", scrub: true },
         }
       );
@@ -517,8 +512,8 @@ function StorySection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".story-content",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 75%", end: "top 50%", scrub: true } }
+        { y: "20%", opacity: 0 },
+        { y: "0%", opacity: 1, scrollTrigger: { trigger: sectionRef.current, start: "top 75%", end: "top 50%", scrub: true } }
       );
     }, sectionRef);
     return () => ctx.revert();
@@ -552,7 +547,7 @@ function StorySection() {
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
+              className="px-6 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-[background-color,color,transform] duration-200 ease-out-strong active:scale-[0.97]"
             >
               Join
             </button>
@@ -584,12 +579,12 @@ function ClosingSection() {
           <div className="flex flex-col items-center">
             <Phone size={20} className="text-[#C9A46B] mb-3" />
             <h4 className="text-xs uppercase tracking-[0.18em] text-[#C9A46B] mb-2 font-medium">Phone</h4>
-            <p className="text-sm text-[#F4EBE1]/60 font-light">+91 98765 43210</p>
+            <p className="text-sm text-[#F4EBE1]/60 font-light">+91 70751 4788</p>
           </div>
         </div>
         <Link
           href="/contact"
-          className="inline-block px-10 py-4 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
+          className="inline-block px-10 py-4 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-[background-color,color,transform] duration-200 ease-out-strong active:scale-[0.97]"
         >
           Get Directions
         </Link>

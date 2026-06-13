@@ -35,13 +35,11 @@ export function Footer() {
         {/* Top Section */}
         <div className="flex flex-col items-center mb-12">
           <Link href="/" className="flex items-center gap-2 mb-4">
-            <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
-              <ellipse cx="14" cy="18" rx="10" ry="8" fill="#5C3A2A" />
-              <ellipse cx="14" cy="18" rx="8" ry="6" fill="#3D2518" />
-              <path d="M12 10 Q14 6 16 10" stroke="#C9A46B" strokeWidth="1.5" fill="none" />
-              <circle cx="14" cy="7" r="2.5" fill="#C9A46B" />
-              <path d="M12 5 L14 2 L16 5" stroke="#C9A46B" strokeWidth="1" fill="none" />
-            </svg>
+            <img 
+              src="/images/logo-transparent.png" 
+              alt="Myth Cocoa Logo" 
+              className="w-10 h-10 object-contain drop-shadow-md" 
+            />
             <span className="font-serif text-xl text-[#F4EBE1]">Myth Cocoa</span>
           </Link>
           <p className="font-serif italic text-lg text-[#C9A46B]">Grown rare. Crafted slow.</p>
@@ -107,7 +105,7 @@ export function Footer() {
           </span>
           <span className="flex items-center gap-2 text-xs">
             <Phone size={14} className="text-[#C9A46B]" />
-            +91 98765 43210
+            +91 70751 47888
           </span>
           <span className="flex items-center gap-2 text-xs">
             <Mail size={14} className="text-[#C9A46B]" />

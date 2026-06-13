@@ -52,7 +52,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-[background-color,backdrop-filter] duration-200 ease-out-strong ${
           showBg
             ? "bg-[#1B0F0A]/95 backdrop-blur-xl border-b border-[#C9A46B]/10"
             : "bg-transparent"
@@ -60,14 +60,12 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-12 h-14 md:h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <svg width="26" height="26" viewBox="0 0 28 28" fill="none" className="transition-transform group-hover:scale-110">
-              <ellipse cx="14" cy="18" rx="10" ry="8" fill="#5C3A2A" />
-              <ellipse cx="14" cy="18" rx="8" ry="6" fill="#3D2518" />
-              <path d="M12 10 Q14 6 16 10" stroke="#C9A46B" strokeWidth="1.5" fill="none" />
-              <circle cx="14" cy="7" r="2.5" fill="#C9A46B" />
-              <path d="M12 5 L14 2 L16 5" stroke="#C9A46B" strokeWidth="1" fill="none" />
-            </svg>
+          <Link href="/" className="flex items-center gap-2 group flex-shrink-0 transition-transform duration-200 ease-out-strong active:scale-[0.97]">
+            <img 
+              src="/images/logo-transparent.png" 
+              alt="Myth Cocoa Logo" 
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-transform duration-200 ease-out-strong group-hover:scale-110 drop-shadow-md" 
+            />
             <span className="font-serif text-base sm:text-lg tracking-wide text-[#F4EBE1]">Myth Cocoa</span>
           </Link>
 
@@ -77,12 +75,12 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-xs uppercase tracking-[0.18em] font-medium transition-colors hover:text-[#C9A46B] relative group ${
+                className={`text-xs uppercase tracking-[0.18em] font-medium transition-[color,transform] duration-200 ease-out-strong hover:text-[#C9A46B] active:scale-[0.97] relative group ${
                   pathname === link.href ? "text-[#C9A46B]" : "text-[#F4EBE1]/70"
                 }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A46B] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A46B] transition-[width] duration-200 ease-out-strong group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -91,7 +89,7 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={openCart}
-              className="relative text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors p-1 -m-1"
+              className="relative text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-[color,transform] duration-200 ease-out-strong active:scale-[0.97] p-1 -m-1"
               aria-label="Cart"
             >
               <ShoppingBag size={20} />
@@ -103,7 +101,7 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-colors p-1 -m-1 touch-target"
+              className="md:hidden text-[#F4EBE1]/70 hover:text-[#C9A46B] transition-[color,transform] duration-200 ease-out-strong active:scale-[0.97] p-1 -m-1 touch-target"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -115,7 +113,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-[#1B0F0A]/98 backdrop-blur-xl transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-[#1B0F0A]/98 backdrop-blur-xl transition-opacity duration-200 ease-out-strong md:hidden ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -124,7 +122,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`w-full text-center py-5 font-serif text-3xl transition-all duration-200 border-b border-[#C9A46B]/5 last:border-0 ${
+              className={`w-full text-center py-5 font-serif text-3xl transition-[opacity,transform,color] duration-200 ease-out-strong active:scale-[0.97] border-b border-[#C9A46B]/5 last:border-0 ${
                 pathname === link.href
                   ? "text-[#C9A46B]"
                   : "text-[#F4EBE1] hover:text-[#C9A46B]"
@@ -138,7 +136,7 @@ export function Navbar() {
           <div className="mt-8 flex flex-col items-center gap-3">
             <button
               onClick={() => { openCart(); setMenuOpen(false); }}
-              className="flex items-center gap-2 px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"
+              className="flex items-center gap-2 px-8 py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-[color,border-color,transform] duration-200 ease-out-strong active:scale-[0.97]"
             >
               <ShoppingBag size={14} />
               View Cart {mounted && cartCount > 0 && `(${cartCount})`}
