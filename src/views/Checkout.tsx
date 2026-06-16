@@ -110,14 +110,14 @@ export default function Checkout() {
                     placeholder="Full name *"
                     value={form.name}
                     onChange={(e) => updateForm("name", e.target.value)}
-                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                   />
                   <input
                     type="tel"
                     placeholder="Phone number *"
                     value={form.phone}
                     onChange={(e) => updateForm("phone", e.target.value)}
-                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                   />
                 </div>
                 <input
@@ -125,7 +125,7 @@ export default function Checkout() {
                   placeholder="Email (optional)"
                   value={form.email}
                   onChange={(e) => updateForm("email", e.target.value)}
-                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                 />
                 
                 <input
@@ -133,7 +133,7 @@ export default function Checkout() {
                   placeholder="Street Address *"
                   value={form.address}
                   onChange={(e) => updateForm("address", e.target.value)}
-                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors mt-4"
+                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors mt-4"
                 />
                 <div className="grid grid-cols-2 gap-4">
                   <input
@@ -141,14 +141,14 @@ export default function Checkout() {
                     placeholder="City *"
                     value={form.city}
                     onChange={(e) => updateForm("city", e.target.value)}
-                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                   />
                   <input
                     type="text"
                     placeholder="Postal code *"
                     value={form.postalCode}
                     onChange={(e) => updateForm("postalCode", e.target.value)}
-                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                    className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                   />
                 </div>
                 <input
@@ -156,7 +156,7 @@ export default function Checkout() {
                   placeholder="Country"
                   value={form.country}
                   onChange={(e) => updateForm("country", e.target.value)}
-                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
+                  className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors"
                 />
               </section>
 
@@ -230,7 +230,7 @@ export default function Checkout() {
                     maxLength={120}
                     value={form.giftMessage}
                     onChange={(e) => updateForm("giftMessage", e.target.value)}
-                    className="w-full mt-3 bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors resize-none"
+                    className="w-full mt-3 bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors resize-none"
                     rows={3}
                   />
                 )}
