@@ -135,7 +135,7 @@ export default function Checkout() {
                   onChange={(e) => updateForm("address", e.target.value)}
                   className="w-full bg-[#2B1E16] border border-[#C9A46B]/20 px-4 py-3 text-base md:text-sm text-[#F4EBE1] placeholder-[#F4EBE1]/30 focus:border-[#C9A46B] focus:outline-none transition-colors mt-4"
                 />
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     type="text"
                     placeholder="City *"
