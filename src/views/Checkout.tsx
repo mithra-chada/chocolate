@@ -97,9 +97,9 @@ export default function Checkout() {
           </button>
           <h1 className="font-serif text-4xl text-[#F4EBE1] mb-12">Complete Your Order</h1>
 
-          <div className="grid md:grid-cols-[1fr_350px] gap-8 md:gap-12 w-full">
+          <div className="grid md:grid-cols-[1fr_350px] gap-8 md:gap-12 w-full min-w-0">
             {/* Form Section */}
-            <div className="space-y-10">
+            <div className="space-y-10 min-w-0 w-full">
               
               {/* Contact Information */}
               <section className="space-y-4">
@@ -163,9 +163,9 @@ export default function Checkout() {
               {/* Shipping Method */}
               <section className="space-y-4">
                 <h2 className="font-serif text-2xl text-[#F4EBE1] mb-6">Shipping Method</h2>
-                <div className="space-y-3">
+                <div className="space-y-3 min-w-0 w-full">
                   <label
-                    className={`flex items-center justify-between flex-wrap gap-2 p-4 border cursor-pointer transition-colors ${
+                    className={`flex items-center justify-between flex-wrap gap-2 p-3 sm:p-4 border cursor-pointer transition-colors w-full min-w-0 ${
                       form.shippingMethod === "standard" ? "border-[#C9A46B] bg-[#C9A46B]/5" : "border-[#C9A46B]/20"
                     }`}
                   >
@@ -185,7 +185,7 @@ export default function Checkout() {
                     <span className="text-sm text-[#C9A46B]">{total >= 5000 ? "Free" : formatPrice(400)}</span>
                   </label>
                   <label
-                    className={`flex items-center justify-between flex-wrap gap-2 p-4 border cursor-pointer transition-colors ${
+                    className={`flex items-center justify-between flex-wrap gap-2 p-3 sm:p-4 border cursor-pointer transition-colors w-full min-w-0 ${
                       form.shippingMethod === "express" ? "border-[#C9A46B] bg-[#C9A46B]/5" : "border-[#C9A46B]/20"
                     }`}
                   >
@@ -239,7 +239,7 @@ export default function Checkout() {
             </div>
 
             {/* Order Summary Sidebar */}
-            <div className="bg-[#2B1E16] p-5 sm:p-6 h-fit sticky top-24 w-full">
+            <div className="bg-[#2B1E16] p-4 sm:p-6 h-fit sticky top-24 w-full min-w-0">
               <h3 className="font-serif text-lg text-[#F4EBE1] mb-6">Order Summary</h3>
               
               <div className="space-y-4 mb-6">
@@ -248,8 +248,8 @@ export default function Checkout() {
                   const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                   
                   return (
-                  <div key={item.id} className="flex gap-4">
-                    <Link href={`/products/${slug}`} className="w-16 h-16 bg-[#1B0F0A] flex-shrink-0 overflow-hidden block group">
+                  <div key={item.id} className="flex gap-3 sm:gap-4 w-full min-w-0">
+                    <Link href={`/products/${slug}`} className="w-14 sm:w-16 h-14 sm:h-16 bg-[#1B0F0A] flex-shrink-0 overflow-hidden block group">
                       <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       </div>
@@ -260,8 +260,8 @@ export default function Checkout() {
                       </Link>
                       <p className="text-xs text-[#F4EBE1]/40 mt-1">Qty: {item.quantity}</p>
                     </div>
-                    <div className="flex flex-col justify-center">
-                      <span className="text-sm text-[#C9A46B]">{formatPrice(item.price * item.quantity)}</span>
+                    <div className="flex flex-col justify-center shrink-0">
+                      <span className="text-sm text-[#C9A46B] whitespace-nowrap">{formatPrice(item.price * item.quantity)}</span>
                     </div>
                   </div>
                 )})}
