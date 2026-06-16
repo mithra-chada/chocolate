@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
 
 export function CartDrawer() {
+  const router = useRouter();
   const { items, isOpen, closeCart, updateQuantity, removeItem, getTotal, getCount } = useCartStore();
 
   if (!isOpen) return null;
@@ -52,21 +54,25 @@ export function CartDrawer() {
             </div>
           ) : (
             <div className="space-y-6">
-              {items.map((item) => (
+              {items.map((item) => {
+                const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                return (
                 <div key={item.id} className="flex gap-4">
-                  <div className="w-20 h-20 bg-[#2B1E16] flex-shrink-0 overflow-hidden">
+                  <Link href={`/products/${slug}`} onClick={closeCart} className="w-20 h-20 bg-[#2B1E16] flex-shrink-0 overflow-hidden block group">
                     <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
       <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />
     </div>
-                  </div>
+                  </Link>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-sm font-medium text-[#F4EBE1] truncate">{item.name}</h4>
+                        <Link href={`/products/${slug}`} onClick={closeCart} className="block">
+                          <h4 className="text-sm font-medium text-[#F4EBE1] hover:text-[#C9A46B] transition-colors truncate">{item.name}</h4>
+                        </Link>
                         {item.variant && (
                           <p className="text-xs text-[#F4EBE1]/50 mt-0.5">{item.variant}</p>
                         )}
@@ -100,7 +106,7 @@ export function CartDrawer() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           )}
         </div>
@@ -132,13 +138,15 @@ export function CartDrawer() {
             </div>
 
             {/* Actions */}
-            <Link
-              href="/checkout"
-              onClick={closeCart}
-              className="block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-center text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] transition-colors"
+            <button
+              onClick={() => {
+                closeCart();
+                router.push("/checkout");
+              }}
+              className="block w-full py-3 bg-[#C9A46B] text-[#1B0F0A] text-center text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] active:scale-[0.97] transition-all duration-150 ease-out"
             >
               Checkout
-            </Link>
+            </button>
             <button
               onClick={closeCart}
               className="block w-full py-3 border border-[#C9A46B]/30 text-[#F4EBE1]/70 text-center text-xs uppercase tracking-[0.08em] hover:border-[#C9A46B] hover:text-[#C9A46B] transition-colors"

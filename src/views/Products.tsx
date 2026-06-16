@@ -164,7 +164,7 @@ export default function Products() {
                         </span>
                       )}
                     </div>
-                    <div className="p-5">
+                    <div className="p-5 pb-16 lg:pb-5">
                       <h3 className="font-serif text-lg text-[#F4EBE1] mb-1">{product.name}</h3>
                       <p className="text-xs text-[#F4EBE1]/50 mb-3 line-clamp-2 font-light">{product.description}</p>
                       <div className="flex items-center justify-between">
@@ -184,8 +184,11 @@ export default function Products() {
                     </div>
                   </Link>
                   <button
-                    onClick={() => handleAddToCart(product)}
-                    className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleAddToCart(product);
+                    }}
+                    className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-200 ease-out active:scale-[0.97]"
                   >
                     Add to Cart
                   </button>

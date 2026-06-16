@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { IceCreamCone, ArrowLeft, Send } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -242,22 +243,28 @@ export default function Checkout() {
               <h3 className="font-serif text-lg text-[#F4EBE1] mb-6">Order Summary</h3>
               
               <div className="space-y-4 mb-6">
-                {items.map((item) => (
+                {items.map((item) => {
+                  // Derive slug from name or could use mockProducts if imported
+                  const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                  
+                  return (
                   <div key={item.id} className="flex gap-4">
-                    <div className="w-16 h-16 bg-[#1B0F0A] flex-shrink-0 overflow-hidden">
+                    <Link href={`/products/${slug}`} className="w-16 h-16 bg-[#1B0F0A] flex-shrink-0 overflow-hidden block group">
                       <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       </div>
-                    </div>
+                    </Link>
                     <div className="flex-1 min-w-0 flex flex-col justify-center">
-                      <p className="text-sm text-[#F4EBE1] truncate">{item.name}</p>
+                      <Link href={`/products/${slug}`} className="block">
+                        <p className="text-sm text-[#F4EBE1] hover:text-[#C9A46B] transition-colors truncate">{item.name}</p>
+                      </Link>
                       <p className="text-xs text-[#F4EBE1]/40 mt-1">Qty: {item.quantity}</p>
                     </div>
                     <div className="flex flex-col justify-center">
                       <span className="text-sm text-[#C9A46B]">{formatPrice(item.price * item.quantity)}</span>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
               
               <div className="space-y-3 pt-6 border-t border-[#C9A46B]/10">

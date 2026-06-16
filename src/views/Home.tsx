@@ -30,6 +30,7 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
 function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,6 +57,10 @@ function HeroSection() {
       );
     }, sectionRef);
 
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Video autoplay blocked by browser", e));
+    }
+
     return () => ctx.revert();
   }, []);
 
@@ -67,11 +72,13 @@ function HeroSection() {
       {/* Background Video */}
       <div className="absolute inset-0 z-[0]">
         <video
+          ref={videoRef}
           src="/images/Cocoa_grinding.mp4"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover z-[0]"
         />
         <div className="absolute inset-0 bg-[#1a0c06]/75 md:bg-[#1a0c06]/[0.65] z-[1]" />
@@ -320,7 +327,7 @@ function CollectionSection() {
                   onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />
     </div>
                 </div>
-                <div className="p-5">
+                <div className="p-5 pb-16 lg:pb-5">
                   <h3 className="font-serif text-lg text-[#F4EBE1] mb-1">{product.name}</h3>
                   <p className="text-xs text-[#F4EBE1]/50 mb-3 line-clamp-2 font-light">{product.description}</p>
                   <div className="flex items-center justify-between">
@@ -336,7 +343,7 @@ function CollectionSection() {
                   e.preventDefault();
                   handleAddToCart(product);
                 }}
-                className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out-strong active:scale-[0.97]"
+                className="absolute bottom-0 left-0 right-0 py-3 bg-[#C9A46B] text-[#1B0F0A] text-xs uppercase tracking-[0.08em] font-medium lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-200 ease-out active:scale-[0.97]"
               >
                 Add to Cart
               </button>

@@ -43,17 +43,19 @@ export default function Cart() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-8">
               {/* Items */}
               <div className="space-y-6">
-                {items.map((item) => (
+                {items.map((item) => {
+                  const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                  return (
                   <div key={item.id} className="flex gap-3 sm:gap-4 bg-[#2B1E16] p-3 sm:p-4">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#1B0F0A] flex-shrink-0 overflow-hidden">
+                    <Link href={`/products/${slug}`} className="w-20 h-20 sm:w-24 sm:h-24 bg-[#1B0F0A] flex-shrink-0 overflow-hidden block group">
                       <div className="w-full h-full overflow-hidden bg-[#231008]" style={{ borderRadius: 'inherit' }}>
-      <img src={item.image} alt={item.name} className="w-full h-full object-cover" onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />
+      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onLoad={(e) => e.currentTarget.classList.add('img-loaded')} />
     </div>
-                    </div>
+                    </Link>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between">
                         <div>
-                          <Link href="/products" className="font-serif text-lg text-[#F4EBE1] hover:text-[#C9A46B] transition-colors">
+                          <Link href={`/products/${slug}`} className="font-serif text-lg text-[#F4EBE1] hover:text-[#C9A46B] transition-colors">
                             {item.name}
                           </Link>
                           {item.variant && <p className="text-xs text-[#F4EBE1]/40 mt-0.5">{item.variant}</p>}
@@ -88,7 +90,7 @@ export default function Cart() {
                       </div>
                     </div>
                   </div>
-                ))}
+                )})}
 
                 <button
                   onClick={clearCart}
