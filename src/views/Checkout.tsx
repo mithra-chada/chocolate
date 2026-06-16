@@ -85,8 +85,8 @@ export default function Checkout() {
   return (
     <div className="bg-[#1B0F0A] min-h-screen flex flex-col">
       <Navbar />
-      <main className="pt-24 pb-16 flex-grow">
-        <div className="max-w-5xl mx-auto px-6">
+      <main className="pt-24 pb-16 flex-grow w-full max-w-[100vw] overflow-x-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
           {/* Back + Title */}
           <button
             onClick={() => router.push("/cart")}
@@ -97,7 +97,7 @@ export default function Checkout() {
           </button>
           <h1 className="font-serif text-4xl text-[#F4EBE1] mb-12">Complete Your Order</h1>
 
-          <div className="grid md:grid-cols-[1fr_350px] gap-12">
+          <div className="grid md:grid-cols-[1fr_350px] gap-8 md:gap-12 w-full">
             {/* Form Section */}
             <div className="space-y-10">
               
@@ -165,11 +165,11 @@ export default function Checkout() {
                 <h2 className="font-serif text-2xl text-[#F4EBE1] mb-6">Shipping Method</h2>
                 <div className="space-y-3">
                   <label
-                    className={`flex items-center justify-between p-4 border cursor-pointer transition-colors ${
+                    className={`flex items-center justify-between flex-wrap gap-2 p-4 border cursor-pointer transition-colors ${
                       form.shippingMethod === "standard" ? "border-[#C9A46B] bg-[#C9A46B]/5" : "border-[#C9A46B]/20"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                       <input
                         type="radio"
                         name="shipping"
@@ -185,11 +185,11 @@ export default function Checkout() {
                     <span className="text-sm text-[#C9A46B]">{total >= 5000 ? "Free" : formatPrice(400)}</span>
                   </label>
                   <label
-                    className={`flex items-center justify-between p-4 border cursor-pointer transition-colors ${
+                    className={`flex items-center justify-between flex-wrap gap-2 p-4 border cursor-pointer transition-colors ${
                       form.shippingMethod === "express" ? "border-[#C9A46B] bg-[#C9A46B]/5" : "border-[#C9A46B]/20"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                       <input
                         type="radio"
                         name="shipping"
@@ -239,7 +239,7 @@ export default function Checkout() {
             </div>
 
             {/* Order Summary Sidebar */}
-            <div className="bg-[#2B1E16] p-6 h-fit sticky top-24">
+            <div className="bg-[#2B1E16] p-5 sm:p-6 h-fit sticky top-24 w-full">
               <h3 className="font-serif text-lg text-[#F4EBE1] mb-6">Order Summary</h3>
               
               <div className="space-y-4 mb-6">
@@ -297,7 +297,7 @@ export default function Checkout() {
 
               <button
                 onClick={handleWhatsAppCheckout}
-                className="w-full py-4 bg-[#C9A46B] text-[#1B0F0A] flex items-center justify-center gap-2 text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#F4EBE1] active:scale-[0.97] transition-all duration-150 ease-out"
+                className="w-full py-4 px-2 bg-[#C9A46B] text-[#1B0F0A] flex items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-[0.05em] sm:tracking-[0.08em] font-medium hover:bg-[#F4EBE1] active:scale-[0.97] transition-all duration-150 ease-out flex-wrap"
               >
                 <Send size={16} />
                 Send Order via WhatsApp
