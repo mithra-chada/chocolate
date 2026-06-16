@@ -89,8 +89,9 @@ export default function Cart() {
                         </span>
                       </div>
                     </div>
-                  </div>
-                )})}
+                </div>
+              );
+            })}
 
                 <button
                   onClick={clearCart}
